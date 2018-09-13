@@ -10,9 +10,18 @@ namespace FuelTankMappingGenerator
     {
         static void Main(string[] args)
         {
-            CSVParser.ReadTankMeasures(@"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\tankMeasures.log");
-            CSVParser.ReadNozzleMeasures(@"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\nozzleMeasures.log");
-            CSVParser.ReadRefuelMeasures(@"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\refuel.log");
+            MappingCreator mappingCreator = new MappingCreator(@"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\tankMeasures.log",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\nozzleMeasures.log",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\dane\pierwotne\Zestaw 1\refuel.log",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\mapowanie\pierwotne\Tank1_10012.csv",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\mapowanie\pierwotne\Tank2_20000.csv",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\mapowanie\pierwotne\Tank3_30000.csv",
+               @"E:\OneDrive\Studia\TPDiA\Dane paliwowe wysokość dekalibracja\Dane paliwowe wysokość dekalibracja\mapowanie\pierwotne\Tank4_40000.csv"
+                );
+
+            mappingCreator.GenerateNewMapping();
+            mappingCreator.MergePoints();
+
         }
     }
 }

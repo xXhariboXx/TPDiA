@@ -108,10 +108,18 @@ namespace FuelTankMappingGenerator
 
             using (var reader = new StreamReader(FilePath))
             {
+                int i = 0;
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(';');
+
+                    if (i == 0)
+                    {
+                        i++;
+                        continue;
+                    }
 
                     Mapping mapping;
                     mapping.Height = Double.Parse(values[0]);
