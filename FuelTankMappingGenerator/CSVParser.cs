@@ -124,6 +124,7 @@ namespace FuelTankMappingGenerator
                     Mapping mapping;
                     mapping.Height = Double.Parse(values[0]);
                     mapping.Volume = Double.Parse(values[1]);
+                    mapping.Date = DateTime.MinValue;
 
                     fuelRecords.Add(mapping);
                 }

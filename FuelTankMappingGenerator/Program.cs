@@ -21,7 +21,8 @@ namespace FuelTankMappingGenerator
 
             mappingCreator.GenerateNewMapping();
             mappingCreator.MergePoints();
-
+            mappingCreator.MergeMappings();
+            mappingCreator.PrintCSV();
         }
     }
 }
