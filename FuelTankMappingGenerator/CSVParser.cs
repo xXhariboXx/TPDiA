@@ -102,5 +102,26 @@ namespace FuelTankMappingGenerator
 
             return fuelRecords;
         }
+        static public List<Mapping> ReadMapping(String FilePath)
+        {
+            List<Mapping> fuelRecords = new List<Mapping>();
+
+            using (var reader = new StreamReader(FilePath))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(';');
+
+                    Mapping mapping;
+                    mapping.Height = Double.Parse(values[0]);
+                    mapping.Volume = Double.Parse(values[1]);
+
+                    fuelRecords.Add(mapping);
+                }
+            }
+
+            return fuelRecords;
+        }
     }
 }
