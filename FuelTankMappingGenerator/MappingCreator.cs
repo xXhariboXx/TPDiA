@@ -115,6 +115,56 @@ namespace FuelTankMappingGenerator
             InitialDataTankFour = CSVParser.ReadMapping(mappingFile4);
         }
 
+        public void GenerateTankMeasures()
+        {
+            foreach (TankRecord tankRecord in TankRecords)
+            {
+                switch (tankRecord.TankID)
+                {
+                    case 1:
+                        {
+                            Mapping newMappingPoint;
+                            newMappingPoint.Height = tankRecord.FuelHeight;
+                            newMappingPoint.Volume = tankRecord.FuelVolume;
+                            newMappingPoint.Date = tankRecord.Time;
+                            NewInitialDataTankOne.Add(newMappingPoint);
+
+                            break;
+                        }
+                    case 2:
+                        {
+                            Mapping newMappingPoint;
+                            newMappingPoint.Height = tankRecord.FuelHeight;
+                            newMappingPoint.Volume = tankRecord.FuelVolume;
+                            newMappingPoint.Date = tankRecord.Time;
+                            NewInitialDataTankTwo.Add(newMappingPoint);
+
+                            break;
+                        }
+                    case 3:
+                        {
+                            Mapping newMappingPoint;
+                            newMappingPoint.Height = tankRecord.FuelHeight;
+                            newMappingPoint.Volume = tankRecord.FuelVolume;
+                            newMappingPoint.Date = tankRecord.Time;
+                            NewInitialDataTankThree.Add(newMappingPoint);
+
+                            break;
+                        }
+                    case 4:
+                        {
+                            Mapping newMappingPoint;
+                            newMappingPoint.Height = tankRecord.FuelHeight;
+                            newMappingPoint.Volume = tankRecord.FuelVolume;
+                            newMappingPoint.Date = tankRecord.Time;
+                            NewInitialDataTankFour.Add(newMappingPoint);
+
+                            break;
+                        }
+                }
+            }
+        }
+
         public void GenerateNewMapping()
         {
             double RefuelRate = 333.333333333333;
@@ -479,13 +529,16 @@ namespace FuelTankMappingGenerator
         {
             using (var w = new StreamWriter("NewMappingTank1.csv"))
             {
-                w.WriteLine("Height;Volume");
+                //w.WriteLine("Height;Volume;Time");
+                w.WriteLine("Height;Volume;Time");
                 w.Flush();
 
                 foreach (Mapping mapping in InitialDataTankOne)
                 {
                     var first = mapping.Height;
                     var second = mapping.Volume;
+                    var third = mapping.Date.ToLongTimeString();
+                    //var line = string.Format("{0};{1};{2}", first, second, third);
                     var line = string.Format("{0};{1}", first, second);
                     w.WriteLine(line);
                     w.Flush();
